@@ -1,0 +1,5 @@
+name: EndlessLobby
+main: com.endless.Lobby
+version: 1.0
+author: Endless
+depend: [Endless]
