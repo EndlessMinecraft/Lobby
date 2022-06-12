@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.endless.listeners.JoinListener;
+import com.endless.listeners.PlayerHandler;
 import com.endless.listeners.WeatherHandler;
 import com.endless.npcs.GetLocations;
 
@@ -22,6 +23,7 @@ public class Lobby extends JavaPlugin {
 	public void initClasses() {
 		getServer().getPluginManager().registerEvents((Listener)new JoinListener(), (Plugin)this);
 		getServer().getPluginManager().registerEvents((Listener)new WeatherHandler(), (Plugin)this);
+		getServer().getPluginManager().registerEvents((Listener)new PlayerHandler(), (Plugin)this);
 		new GetLocations().getLocation();
 	}
 	
