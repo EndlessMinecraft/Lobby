@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
@@ -19,16 +18,11 @@ import com.Endless.user.User;
 
 public class JoinListener implements Listener {
 
-	private User user;
 
     ELCore plugin = (ELCore)ELCore.getPlugin(ELCore.class);
 
 	
-	ScoreboardManager manager = Bukkit.getScoreboardManager();
-	Scoreboard score = manager.getNewScoreboard();
-	
-	Team rankTab;
-	
+	// Gives players their prefixes on join. 
     @SuppressWarnings("deprecation")
 	@EventHandler
     public void playerJoin(PlayerJoinEvent e){
@@ -38,6 +32,8 @@ public class JoinListener implements Listener {
     	int ordinal = user.getRank().ordinal() - 8;
     	String s = String.valueOf(ordinal *= -1);
     	
+    	ScoreboardManager manager = Bukkit.getScoreboardManager();
+    	Scoreboard score = manager.getNewScoreboard();
     	if(score.getTeam(s + e.getPlayer().getName().substring(0,2) + user.getRank().getName().toString()) == null){
 	        Team rankTab = score.registerNewTeam(s + e.getPlayer().getName().substring(0,2) + user.getRank().getName().toString());
 	        rankTab.setPrefix(ChatColor.translateAlternateColorCodes('&', user.getPrefix()));
@@ -52,15 +48,5 @@ public class JoinListener implements Listener {
         }
         
     }
-	
-//    @EventHandler
-//    public void playerLeave(PlayerQuitEvent e) {
-//        User user = new User(e.getPlayer());
-//    	System.out.print(user.getRank().ordinal());
-//    	int ordinal = user.getRank().ordinal() - 8;
-//    	String s = String.valueOf(ordinal *= -1);
-//    	score.getTeam(s + e.getPlayer().getName().substring(0,2) + user.getRank().getName().toString()).unregister();;
-//    	 
-//    }
     
 }

@@ -16,6 +16,7 @@ public class GetLocations {
 
 	Map<String, Location> map = new HashMap<>();
 
+	//Takes in the line of the sign and the location of the block underneath it, while also deleting both. 
 	public void getLocation() {
 		int radius = 7;
 		Location loc = new Location(Bukkit.getWorld("world"), 234.537, 65.00, 225.531);
@@ -33,7 +34,6 @@ public class GetLocations {
 						for (String line : lines) {
 							map.put(line, below.getLocation());
 						}
-//						EntityTypes.spawnEntity(new LifestealZombie(Bukkit.getWorld("world")), below.getLocation());
 					}
 				}
 			}
