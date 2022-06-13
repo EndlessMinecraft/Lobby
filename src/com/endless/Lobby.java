@@ -38,4 +38,9 @@ public class Lobby extends JavaPlugin {
 		        },  0L, 0L);
 	}
 	
+	public void onDisable() {
+		Bukkit.unloadWorld(Bukkit.getWorld("world"), false);
+		Bukkit.getWorld("world").setAutoSave(false);
+	}
+	
 }

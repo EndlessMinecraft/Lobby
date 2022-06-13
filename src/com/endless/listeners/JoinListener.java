@@ -32,12 +32,13 @@ public class JoinListener implements Listener {
     @SuppressWarnings("deprecation")
 	@EventHandler
     public void playerJoin(PlayerJoinEvent e){
+    	
+    	
         // Reset Player //
     	PlayerUtilities.reset(e.getPlayer());
     	
     	
         User user = new User(e.getPlayer());
-    	System.out.print(user.getRank().ordinal());
     	int ordinal = user.getRank().ordinal() - 8;
     	String s = String.valueOf(ordinal *= -1);
     	

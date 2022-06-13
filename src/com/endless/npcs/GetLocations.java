@@ -14,12 +14,12 @@ import org.bukkit.block.Sign;
 
 public class GetLocations {
 
-	Map<String, Location> map = new HashMap<>();
+	static Map<String, Location> map = new HashMap<>();
 
 	//Takes in the line of the sign and the location of the block underneath it, while also deleting both. 
 	public void getLocation() {
-		int radius = 7;
-		Location loc = new Location(Bukkit.getWorld("world"), 234.537, 65.00, 225.531);
+		int radius = 20;
+		Location loc = new Location(Bukkit.getWorld("world"), -24, 66, -4);
 		World world = loc.getWorld();
 		for (int x = -radius; x < radius; x++) {
 			for (int y = -radius; y < radius; y++) {
@@ -32,11 +32,14 @@ public class GetLocations {
 						Block below = block.getRelative(BlockFace.DOWN);
 						below.setType(Material.AIR);
 						for (String line : lines) {
-							map.put(line, below.getLocation());
+							map.put(line, new Location(Bukkit.getWorld("world"), (below.getX() + .5), 66, (below.getZ() + .5)));
 						}
 					}
 				}
 			}
 		}
+		
+		SpawnNPCs.spawn();
+		
 	}
 }
