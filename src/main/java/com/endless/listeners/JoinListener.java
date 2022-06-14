@@ -14,11 +14,6 @@ import com.Endless.ELCore;
 import com.Endless.user.User;
 import com.Endless.utilities.PlayerUtilities;
 
-
-
-
-
-
 public class JoinListener implements Listener {	
 
 
