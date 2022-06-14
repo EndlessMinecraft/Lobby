@@ -1,6 +1,8 @@
 package com.endless.npcs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,7 +15,7 @@ import com.Endless.utilities.ServerUtilities;
 
 public class SpawnNPCs implements Listener {
 
-	static String[] gameNPCs = new String[] { "LifeSteal" };
+	static String[] gameNPCs = new String[] { "Arcade" };
 
 	public static void spawn() {
 
@@ -22,26 +24,15 @@ public class SpawnNPCs implements Listener {
 		for (String game : gameNPCs) {
 			if (GetLocations.map.get(game) != null) {
 				EntityTypes.spawnEntity(
-						new CustomZombie(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "LifeSteal",
+						new CustomZombie(game,
 								Bukkit.getWorld("world")),
-						GetLocations.map.get("LifeSteal"));
+						GetLocations.map.get(game));
+				
 				spawnArmorStand(game, GetLocations.map.get(game));
 			} else {
 				npcNotFound.add(game);
 			}
 		}
-//		if (GetLocations.map.get("LifeSteal") != null) {
-//			EntityTypes.spawnEntity(new CustomZombie(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "LifeSteal", Bukkit.getWorld("world")), GetLocations.map.get("LifeSteal"));
-//			spawnArmorStand("LifeSteal", GetLocations.map.get("LifeSteal"));
-//		} else {
-//			npcNotFound.add("LifeSteal");
-//		}
-//		
-//		if(GetLocations.map.get("Factions") != null) {
-//				EntityTypes.spawnEntity(new CustomZombie(ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Factions", Bukkit.getWorld("world")), GetLocations.map.get("Factions"));
-//			} else {
-//				npcNotFound.add("Factions");
-//			}
 
 		if (npcNotFound.size() >= 1) {
 			for (int i = 0; i < 10; i++) {
@@ -51,6 +42,8 @@ public class SpawnNPCs implements Listener {
 		}
 	}
 
+	static Map<String, String> armorStands = new HashMap<>();
+	
 	public static void spawnArmorStand(String game, Location loc) {
 		ArmorStand as = (ArmorStand) Bukkit.getWorld("world").spawnEntity(
 				new Location(loc.getWorld(), loc.getX(), (loc.getY() + .249999), loc.getZ()), EntityType.ARMOR_STAND);
@@ -58,6 +51,7 @@ public class SpawnNPCs implements Listener {
 		as.setGravity(false);
 		as.setCustomName(ChatColor.RED + ChatColor.BOLD.toString() + game);
 		as.setCustomNameVisible(true);
+		armorStands.put(ChatColor.RED + ChatColor.BOLD.toString() + game, game);
 		Location loc2 = as.getLocation();
 		ArmorStand as2 = (ArmorStand) Bukkit.getWorld("world").spawnEntity(
 				new Location(loc2.getWorld(), loc2.getX(), (loc.getY() + 0.01), loc2.getZ()), EntityType.ARMOR_STAND);

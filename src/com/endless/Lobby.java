@@ -10,13 +10,14 @@ import com.endless.listeners.JoinListener;
 import com.endless.listeners.PlayerHandler;
 import com.endless.listeners.WeatherHandler;
 import com.endless.npcs.GetLocations;
+import com.endless.npcs.NPCInteract;
 
 public class Lobby extends JavaPlugin {
 
 	public void onEnable() {
 		initClasses();
 		timeFreeze();
-		
+	    
 	}
 	
 	//Initializes all listeners. 
@@ -24,6 +25,7 @@ public class Lobby extends JavaPlugin {
 		getServer().getPluginManager().registerEvents((Listener)new JoinListener(), (Plugin)this);
 		getServer().getPluginManager().registerEvents((Listener)new WeatherHandler(), (Plugin)this);
 		getServer().getPluginManager().registerEvents((Listener)new PlayerHandler(), (Plugin)this);
+		getServer().getPluginManager().registerEvents((Listener)new NPCInteract(), (Plugin)this);
 		new GetLocations().getLocation();
 	}
 	

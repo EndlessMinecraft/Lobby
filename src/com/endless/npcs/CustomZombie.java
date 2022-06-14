@@ -21,8 +21,6 @@ public class CustomZombie extends EntityZombie
         List targetB = (List)getPrivateField("b", PathfinderGoalSelector.class, targetSelector); targetB.clear();
         List targetC = (List)getPrivateField("c", PathfinderGoalSelector.class, targetSelector); targetC.clear();
         this.goalSelector.a(0, new PathfinderGoalFloat(this));
-        
-        this.setCustomName("");
         this.setCustomNameVisible(false);
     }
     
@@ -58,6 +56,11 @@ public class CustomZombie extends EntityZombie
     @Override
     public void m() {
 
+    }
+    
+    @Override
+    public void makeSound(String s, float f, float f1) {
+    	return;
     }
     
 }

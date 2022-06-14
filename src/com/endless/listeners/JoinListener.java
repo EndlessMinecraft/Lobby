@@ -17,7 +17,9 @@ import com.Endless.utilities.PlayerUtilities;
 
 
 
-public class JoinListener implements Listener {
+
+
+public class JoinListener implements Listener {	
 
 
     ELCore plugin = (ELCore)ELCore.getPlugin(ELCore.class);
@@ -33,15 +35,16 @@ public class JoinListener implements Listener {
 	@EventHandler
     public void playerJoin(PlayerJoinEvent e){
     	
+        User user = new User(e.getPlayer());
+
     	
         // Reset Player //
     	PlayerUtilities.reset(e.getPlayer());
     	
-    	
-        User user = new User(e.getPlayer());
+    	//Prefix in tab
     	int ordinal = user.getRank().ordinal() - 8;
     	String s = String.valueOf(ordinal *= -1);
-    	
+
     	if(score.getTeam(s + e.getPlayer().getName().substring(0,2) + user.getRank().getName().toString()) == null){
 	        Team rankTab = score.registerNewTeam(s + e.getPlayer().getName().substring(0,2) + user.getRank().getName().toString());
 	        rankTab.setPrefix(ChatColor.translateAlternateColorCodes('&', user.getPrefix()));
