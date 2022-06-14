@@ -1,16 +1,16 @@
 package com.endless;
 
+import com.endless.listeners.JoinListener;
+import com.endless.listeners.PlayerHandler;
+import com.endless.listeners.WeatherHandler;
+import com.endless.npcs.GetLocations;
+import com.endless.npcs.NPCInteract;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.endless.listeners.JoinListener;
-import com.endless.listeners.PlayerHandler;
-import com.endless.listeners.WeatherHandler;
-import com.endless.npcs.GetLocations;
-import com.endless.npcs.NPCInteract;
 
 public class Lobby extends JavaPlugin {
 
